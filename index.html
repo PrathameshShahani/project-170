@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>AR Toy Store</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+  <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <!-- Local StyleSheet -->
+  <link href="./style.css" rel="stylesheet"/>
+
+  <!--Marker Handler Src-->
+  <script src="./js/addButton.js"></script>
+  <script src="./js/markerHandler.js"></script>
+  <script src="./js/addMarker.js"></script>
+
+</head>
+
+<body style="margin : 0px; overflow: hidden;">
+
+  <a-scene embedded vr-mode-ui="enabled: false"
+    arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;debugUIEnabled: false;"
+    gesture-detector create-buttons>
+
+    <!-- Camera -->
+    <a-entity camera></a-entity>
+    <a-assets>
+      <a-asset-item id="crane-model" src="./assets/models/scene.gltf"></a-asset-item>
+    </a-assets>
+
+    <a-marker id="crane-marker" type="pattern" url="./assets/crane/pattern-crane.patt" cursor="rayOrigin:mouse" markerhandler>
+      <a-entity id="crane3d-model" position="-2 -1 0" rotation="-90 0 0" scale="5 5 5" gltf-model="#crane-model" gesture-handler>
+      </a-entity>
+
+      <a-plane position="0 0 0" width="1.6" height="1.5" rotation="-90 0 0">
+        <a-plane position="0 0.89 0.02" width="1.6" height="0.3" rotation="0 0 0" color="#f0c30f">
+          <a-entity position="0 0 0.1" rotation="0 0 0" 
+          text="font:monoid; value:HYDRAULIC CRANE; color:black; width:1.8; height:1; align:center;"></a-entity>
+        </a-plane>
+
+        <a-entity position="0 0 0.1" rotation="0 0 0" 
+        text="font:monoid; color:black; align:center; width:1.5; 
+        value: Have Fun with Hydraulic Crane : Hydraulic Toys are Fun to Play with also Helps in Development of Early Age Analytical & Problem Solving Skills in Child and Helps Improving Creativity & Curiosity
+        Children Learn Best Through Play: Smartivity helps Reducing Screen Time & Helps in Brain Development of your child with STEAM Concepts based game/toy with Real Moving Parts & MECHANICAL ACTIONS"></a-entity>
+      </a-plane>
+    </a-marker>
+
+
+
+
+
+  </a-scene>
+
+  <!-- Button Main Div -->
+  <div id="button-div"></div>
+</body>
+
+</html>
